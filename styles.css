@@ -1,0 +1,60 @@
+body{
+  background: linear-gradient(0.125turn,#faf6fc, #f3e8f9)
+}
+
+.container{
+  display:grid;
+  grid-template-areas: 
+  'title title title'
+  '. drawing-mode .'
+  'settings board board';
+  align-items: center;
+  justify-content:center;
+  text-align: center;
+}
+
+#slider{
+    color:red;
+  }
+
+  .slider:hover {
+    opacity: 1;
+  }
+
+#slider-value{
+  color:white;
+}
+
+  .title{
+    grid-area:title;
+  }
+
+  #grid{
+    grid-area: board;
+    display:grid;
+    width:600px;
+    height:600px;
+    border: solid black 1px;
+
+  }
+  
+#settings{
+  display:flex;
+  flex-direction: column;
+  grid-area:settings;
+  padding: 20px;
+  background-color: #fff;
+  justify-content:center;
+  align-items: center;
+  margin: 20px;
+}
+
+input, button{
+  height:4rem;
+  width:4rem;
+}
+
+.active{
+ box-shadow: 1rem;
+ border: solid 2px black;
+}
