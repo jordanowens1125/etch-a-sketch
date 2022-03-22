@@ -3,15 +3,17 @@
 //get slider value 
 let square = document.getElementById('slider').value;
 
-//let click =true;
 
-let trigger =false;
 
 let colorInput =document.querySelector('input');
 let color = colorInput.value;
 
 //get buttons that will change when clicked
 let buttons =document.getElementsByTagName('button');
+
+//get slider value 
+let drawingStatus = document.getElementById('drawing-mode');
+
 
 
 //populate a grid with the slider value as the width and height
@@ -42,9 +44,11 @@ function populateBoard(value){
   }
 }
 
-function colorSquare(){
-  if(trigger){
 
+//color the square only if mousedown equals true
+function colorSquare(e){
+  if (mouseDown ){
+    
     if (color==='random'){
       const randomColor = Math.floor(Math.random()*16777215).toString(16);
       this.style.backgroundColor='#'+randomColor
@@ -112,24 +116,9 @@ function reset(){
   });
 }
 
-document.body.onmousedown(e)=>{
-  trigger = true;
-} 
+let mouseDown = false
 
-document.body.addEventListener(mouseup,(e)=>{
-  trigger=false
-  console.log(trigger)
-})
-// document.querySelector('body').addEventListener('click',(e)=>{
-//     if (e.target.tagName != 'BUTTON'&& e.target.tagName !='INPUT'){
-//       console.log('click')
-//       click = !click;
-//       if (click){
-//         document.querySelector('.drawing-mode').textContent = "Mode: Drawing"
-//       }
-//       else{
-//         document.querySelector('.drawing-mode').textContent = "Mode: Not Drawing"
-//       }
-//     }
-    
-// });
+
+grid.onmousedown = () => (mouseDown = true, drawingStatus.innerText='Mode: Drawing')
+grid.onmouseup = () => (mouseDown = false, drawingStatus.innerText='Mode: Not Drawing')
+
